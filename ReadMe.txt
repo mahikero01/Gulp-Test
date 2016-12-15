@@ -2,7 +2,7 @@
     $ npm install -g http-server
     
 2) Install Gulp locally in dev
-    $ npm install gulp --save-dev -e
+    $ npm install gulp --save-dev 
 
 3) Install gulp globally 
     $ npm install gulp -g
@@ -18,3 +18,9 @@
 
 7) install gulp concat plug in (use for concatenate files)
     $ npm install gulp-concat --save-dev
+
+8) install gulp-uglify in dev  (use for minifying codes)
+    $ npm install gulp-uglify --save-dev 
+
+9) install gulp-rename  in dev (use fro renaming files)
+    $ npm install gulp-rename --save-dev
