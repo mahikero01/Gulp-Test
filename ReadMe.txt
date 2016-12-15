@@ -24,3 +24,6 @@
 
 9) install gulp-rename  in dev (use fro renaming files)
     $ npm install gulp-rename --save-dev
+
+10) install gulp-sass in dev (use for compilling sass to css)
+    $ npm install gulp-sass --save-dev

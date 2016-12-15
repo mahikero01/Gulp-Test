@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var sass = require('gulp-sass');
 
 gulp.task("hello", function(){
     console.log("Hello");
@@ -30,4 +31,12 @@ gulp.task("minifyScripts", function (){
     .pipe(uglify())  // minify scripts to a file
     .pipe(rename('app.min.js')) //rename the file
     .pipe(gulp.dest('js'));   // put the file in the folder
+});
+
+
+//compile sass to css
+gulp.task("compileSass", function (){
+    gulp.src('scss/application.scss') //pipe is used for connecting methods
+    .pipe(sass())  // compile sass
+    .pipe(gulp.dest('css'));   // put the file in the folder
 });
