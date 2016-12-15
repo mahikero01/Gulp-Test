@@ -27,3 +27,6 @@
 
 10) install gulp-sass in dev (use for compilling sass to css)
     $ npm install gulp-sass --save-dev
+
+11) install gulp-sourcemaps --save-dev  (use for creating sass maps in css)
+    $ npm install gulp-sourcemaps --save-dev

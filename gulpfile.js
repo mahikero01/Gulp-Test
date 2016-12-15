@@ -5,6 +5,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
+var maps = require('gulp-sourcemaps');
 
 gulp.task("hello", function(){
     console.log("Hello");
@@ -37,6 +38,8 @@ gulp.task("minifyScripts", function (){
 //compile sass to css
 gulp.task("compileSass", function (){
     gulp.src('scss/application.scss') //pipe is used for connecting methods
+    .pipe(maps.init()) // create the maps
     .pipe(sass())  // compile sass
+    .pipe(maps.write('./')) //write the map file where does the gulp.dest
     .pipe(gulp.dest('css'));   // put the file in the folder
 });
