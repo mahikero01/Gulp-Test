@@ -22,7 +22,9 @@ gulp.task("concatScripts", function (){
         'js/script1.js', 
         'js/script2.js', 
         'js/script3.js']) //pipe is used for connecting methods
+    .pipe(maps.init()) // create the maps
     .pipe(concat("app.js"))  // combine the scripts to a file
+    .pipe(maps.write('./')) //write the map file where does the gulp.dest
     .pipe(gulp.dest('js'));   // put the file in the folder
 });
 
