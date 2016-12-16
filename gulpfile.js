@@ -88,3 +88,9 @@ gulp.task('build', ['minifyScripts', 'compileSass']);
 
 //set the build task as default
 gulp.task('default', ['build']);
+
+
+//this is use for watch and monitoring
+gulp.task('watchSass', function(){
+    gulp.watch('scss/**/*.css',['compileSass']);
+});
