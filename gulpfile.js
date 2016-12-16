@@ -6,6 +6,7 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var maps = require('gulp-sourcemaps');
+var del = require('del');
 
 gulp.task("hello", function(){
     console.log("Hello");
@@ -14,7 +15,6 @@ gulp.task("hello", function(){
 gulp.task("default", ["hello"], function (){
     console.log("This is the default task");
 });
-
 
 //concatnate javascripts
 gulp.task("concatScripts", function (){
@@ -36,7 +36,6 @@ gulp.task("minifyScripts", function (){
     .pipe(gulp.dest('js'));   // put the file in the folder
 });
 
-
 //compile sass to css
 gulp.task("compileSass", function (){
     gulp.src('scss/application.scss') //pipe is used for connecting methods
@@ -51,8 +50,7 @@ gulp.task("compileSass", function (){
 
 //Running multiple task in serialized
 
-
-
+//concateneate scripts
 gulp.task("concatScripts", function (){
     return gulp.src([
         'js/script1.js', 
@@ -72,7 +70,6 @@ gulp.task("minifyScripts", ['concatScripts'], function (){
     .pipe(gulp.dest('js'));   // put the file in the folder
 });
 
-
 //compile sass to css
 gulp.task("compileSass", function (){
     return gulp.src('scss/application.scss') //pipe is used for connecting methods
@@ -82,12 +79,27 @@ gulp.task("compileSass", function (){
     .pipe(gulp.dest('css'));   // put the file in the folder
 });
 
+//use for deleteing files
+gulp.task('clean', function(){
+    del(['dist', 'css/application.css*', 'js/app*.js*']);
+});
 
 // this will do the 3 task, these will run at the same time
-gulp.task('build', ['minifyScripts', 'compileSass']);
+gulp.task('build', ['minifyScripts', 'compileSass'], function(){
+    return gulp.src([
+        "css/application.css", 
+        "js/app.min.js", 
+        "index.html",
+        "img/**",
+        "fonts/**"], {base: './'})// this will retain the subfolder e.g. css, js 
+        .pipe(gulp.dest("dist")); // send all minimize and concat to dist folder
+});
 
 //set the build task as default
-gulp.task('default', ['build']);
+gulp.task('default', ['clean'], function() {
+    gulp.start('build');
+});
+
 
 
 //this is use for watch and monitoring

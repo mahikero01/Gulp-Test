@@ -30,3 +30,6 @@
 
 11) install gulp-sourcemaps --save-dev  (use for creating sass maps in css)
     $ npm install gulp-sourcemaps --save-dev
+
+12) install del (use for cleaning old files that has been renamed)
+    $ npm install del --save-del
