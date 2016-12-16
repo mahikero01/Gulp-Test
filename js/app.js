@@ -10,7 +10,7 @@ var sc2 = 2;
 
 
 
-var script2 = 2;
+var script23 = 2;
 var sc3 = 3;
 
 

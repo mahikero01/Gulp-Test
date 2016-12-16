@@ -103,6 +103,7 @@ gulp.task('default', ['clean'], function() {
 
 
 //this is use for watch and monitoring
-gulp.task('watchSass', function(){
-    gulp.watch('scss/**/*.css',['compileSass']);
+gulp.task('watchFiles', function(){
+    gulp.watch('scss/**/*.scss',['compileSass']);
+    gulp.watch('js/sc*.js', ['concatScripts']);
 });
